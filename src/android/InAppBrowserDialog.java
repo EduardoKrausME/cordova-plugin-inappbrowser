@@ -16,7 +16,7 @@
        specific language governing permissions and limitations
        under the License.
 */
-package org.apache.cordova.inappbrowser;
+package com.eduardokraus.inappbrowser;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -41,7 +41,7 @@ public class InAppBrowserDialog extends Dialog {
         this.inAppBrowser = browser;
     }
 
-    public void onBackPressed () {
+    public void onBackPressed() {
         if (this.inAppBrowser == null) {
             this.dismiss();
         } else {
@@ -49,7 +49,7 @@ public class InAppBrowserDialog extends Dialog {
             // because it does a clean up
             if (this.inAppBrowser.hardwareBack() && this.inAppBrowser.canGoBack()) {
                 this.inAppBrowser.goBack();
-            }  else {
+            } else {
                 this.inAppBrowser.closeDialog();
             }
         }
