@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         id="cordova-plugin-inappbrowser"
-        version="5.0.1-dev">
+        version="3.1.0-dev">
 
     <name>InAppBrowser</name>
     <description>Cordova InAppBrowser Plugin</description>
     <license>Apache 2.0</license>
     <keywords>cordova,in,app,browser,inappbrowser</keywords>
-    <repo>https://github.com/apache/cordova-plugin-inappbrowser</repo>
-    <issue>https://github.com/apache/cordova-plugin-inappbrowser/issues</issue>
 
     <engines>
-        <engine name="cordova" version=">=9.0.0"/>
-        <engine name="cordova-ios" version=">=6.0.0" />
-        <engine name="cordova-android" version=">=7.0.0" />
+      <engine name="cordova" version=">=3.1.0" /><!-- Needs cordova/urlutil -->
     </engines>
 
     <!-- android -->
     <platform name="android">
         <js-module src="www/inappbrowser.js" name="inappbrowser">
             <clobbers target="cordova.InAppBrowser.open" />
+            <clobbers target="window.open" />
         </js-module>
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="InAppBrowser">
@@ -30,8 +27,8 @@
         <source-file src="src/android/InAppBrowser.java" target-dir="src/com/eduardokraus/inappbrowser" />
         <source-file src="src/android/InAppBrowserDialog.java" target-dir="src/com/eduardokraus/inappbrowser" />
         <source-file src="src/android/InAppChromeClient.java" target-dir="src/com/eduardokraus/inappbrowser" />
-        <source-file src="src/android/VideoWebChromeClient.java" target-dir="src/com/eduardokraus/inappbrowser" />
-        <source-file src="src/android/VideoWebView.java" target-dir="src/com/eduardokraus/inappbrowser" />
+        <source-file src="src/android/VideoEnabledWebChromeClient.java" target-dir="src/com/eduardokraus/inappbrowser" />
+        <source-file src="src/android/VideoEnabledWebView.java" target-dir="src/com/eduardokraus/inappbrowser" />
 
         <!--  drawable src/android/resources -->
         <resource-file src="src/android/res/drawable-hdpi/ic_action_next_item.png" target="res/drawable-hdpi/ic_action_next_item.png" />
@@ -48,27 +45,43 @@
         <resource-file src="src/android/res/drawable-mdpi/ic_action_remove.png" target="res/drawable-mdpi/ic_action_remove.png" />
         <resource-file src="src/android/res/drawable-xhdpi/ic_action_remove.png" target="res/drawable-xhdpi/ic_action_remove.png" />
         <resource-file src="src/android/res/drawable-xxhdpi/ic_action_remove.png" target="res/drawable-xxhdpi/ic_action_remove.png" />
+
     </platform>
 
     <!-- ios -->
     <platform name="ios">
         <js-module src="www/inappbrowser.js" name="inappbrowser">
             <clobbers target="cordova.InAppBrowser.open" />
+            <clobbers target="window.open" />
         </js-module>
         <config-file target="config.xml" parent="/*">
             <feature name="InAppBrowser">
+                <param name="ios-package" value="CDVInAppBrowser" />
+                <param name="onload" value="true" />
+            </feature>
+            <feature name="UIInAppBrowser">
+                <param name="ios-package" value="CDVUIInAppBrowser" />
+                <param name="onload" value="true" />
+            </feature>
+            <feature name="WKInAppBrowser">
                 <param name="ios-package" value="CDVWKInAppBrowser" />
                 <param name="onload" value="true" />
             </feature>
         </config-file>
+
+        <header-file src="src/ios/CDVInAppBrowser.h" />
+	    <source-file src="src/ios/CDVInAppBrowser.m" />
         <header-file src="src/ios/CDVInAppBrowserOptions.h" />
         <source-file src="src/ios/CDVInAppBrowserOptions.m" />
         <header-file src="src/ios/CDVInAppBrowserNavigationController.h" />
         <source-file src="src/ios/CDVInAppBrowserNavigationController.m" />
+	    <header-file src="src/ios/CDVUIInAppBrowser.h" />
+	    <source-file src="src/ios/CDVUIInAppBrowser.m" />
 	    <header-file src="src/ios/CDVWKInAppBrowser.h" />
 	    <source-file src="src/ios/CDVWKInAppBrowser.m" />
 	    <header-file src="src/ios/CDVWKInAppBrowserUIDelegate.h" />
 	    <source-file src="src/ios/CDVWKInAppBrowserUIDelegate.m" />
+
 
 	    <framework src="CoreGraphics.framework" />
     </platform>

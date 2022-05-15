@@ -1,16 +1,26 @@
 {
-    "name" : "cordova-plugin-inappbrowser",
-    "version" : "5.0.1-dev",
     "description" : "Cordova InAppBrowser Plugin",
-    "types" : "./types/index.d.ts",
-    "cordova" : {
-        "id" : "cordova-plugin-inappbrowser",
-        "platforms" : [
-            "android",
-            "ios"
-        ]
+    "name" : "cordova-plugin-inappbrowser",
+    "license" : "Apache-2.0",
+    "author" : {
+        "name" : "Eduardo Kraus"
     },
-    "repository" : "github:apache/cordova-plugin-inappbrowser",
-    "author" : "Apache Software Foundation",
-    "license" : "Apache-2.0"
+    "bugs" : {
+        "url" : "https://issues.apache.org/jira/browse/CB"
+    },
+    "devDependencies" : {
+        "eslint" : "^4.0.0",
+        "eslint-config-semistandard" : "^11.0.0",
+        "eslint-config-standard" : "^10.2.1",
+        "eslint-plugin-import" : "^2.3.0",
+        "eslint-plugin-node" : "^5.0.0",
+        "eslint-plugin-promise" : "^3.5.0",
+        "eslint-plugin-standard" : "^3.0.1"
+    },
+    "homepage" : "https://github.com/apache/cordova-plugin-inappbrowser",
+    "repository" : {
+        "type" : "git",
+        "url" : "git+https://github.com/apache/cordova-plugin-inappbrowser.git"
+    },
+    "version" : "3.1.0"
 }
