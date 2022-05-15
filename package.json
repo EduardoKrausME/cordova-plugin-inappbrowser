@@ -1,6 +1,7 @@
 {
     "description" : "Cordova InAppBrowser Plugin",
     "name" : "cordova-plugin-inappbrowser",
+    "version" : "3.1.0",
     "license" : "Apache-2.0",
     "author" : {
         "name" : "Eduardo Kraus"
@@ -22,5 +23,5 @@
         "type" : "git",
         "url" : "git+https://github.com/apache/cordova-plugin-inappbrowser.git"
     },
-    "version" : "3.1.0"
+    "types" : "./types/index.d.ts"
 }
